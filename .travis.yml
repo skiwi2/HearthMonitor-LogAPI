@@ -1,0 +1,31 @@
+language: java
+
+jdk:
+  - oraclejdk8
+  - oraclejdk7
+  - openjdk7
+  - openjdk6
+
+before_install:
+  - chmod +x gradlew
+
+notifications:
+  webhooks:
+    urls:
+      - secure: "PB66FfY2BALCDcwFHPxpKKn/sa9a9h7nd3Nqd8GCeWBkqEFK7bpdzMajcTKA3gEepbBy/dOMMXQ2ZjxVcs8ZCsVl6ywomBH6SXH+Qgmqjnu3bh/oXpF8Nmk86/5CsQhEfNVQJCBp6Tir33gQSDQs93BWUSyZ+s10gAAk4tXU83E="
+    on_success: always
+    on_failure: always
+    on_start: false
+
+deploy:
+  provider: releases
+  api-key:
+    secure: "PfQLP01cnmTDN/vFgKuEgCZIbCLej1qHgE+6r5Q3MrMEYPzHTTN2cKizcEqtZ7LWth7e0XYnUyKBytg5kFzYBQl31fO/qhz5a5mf7OjuQbwmDFuJiElFafNX6NHpOx5O+wq7FHp2NzOsNiW27yD+12XgNjMkL27WBgRWsEWtuVA="
+  file:
+    - "build/libs/hearthmonitor-logapi-0.1.jar"
+  skip_cleanup: true
+  on:
+    tags: true
+    all_branches: true
+    #must remain on all_branches: true together with tags: true due to the following bug: https://github.com/travis-ci/travis-ci/issues/1675
+    #ideal situation would be to change it such that it only builds a release on the master branch on tag push
