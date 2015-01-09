@@ -9,6 +9,44 @@ jdk:
 before_install:
   - chmod +x gradlew
 
+# see https://github.com/dmakhno/travis_after_all
+script:
+  # see https://github.com/dmakhno/travis_after_all/pull/1
+  # -O writes it to a file named the same as the remote file name
+  # $TRAVIS_REPO_SLUG expands to for example skiwi2/somerepo
+  - curl -LO "https://raw.github.com/$TRAVIS_REPO_SLUG/$TRAVIS_BRANCH/travis_after_all.py"
+
+after_success:
+  - python travis_after_all.py
+  - export $(cat .to_export_back)
+  - |
+      if [ "$BUILD_LEADER" = "YES" ]; then
+        if [ "$BUILD_AGGREGATE_STATUS" = "others_succeeded" ]; then
+          # TODO: call gradle uploadArchives with -P properties if branch == develop || branch == master
+          echo "All Succeded! PUBLISHING..."
+          if [[ ($TRAVIS_BRANCH = "master" && $TRAVIS_TAG) || $TRAVIS_BRANCH = "develop" ]]; then
+            gradlew uploadArchives -PossrhUsername="$OSSRH_USERNAME" -PossrhPassword="$OSSRH_PASSWORD"
+          fi
+        else
+          echo "Some Failed"
+        fi
+      fi
+
+after_failure:
+  - python travis_after_all.py
+  - export $(cat .to_export_back)
+  - |
+      if [ "$BUILD_LEADER" = "YES" ]; then
+        if [ "$BUILD_AGGREGATE_STATUS" = "others_failed" ]; then
+          echo "All Failed"
+        else
+          echo "Some Failed"
+        fi
+      fi
+
+after_script:
+  - echo leader=$BUILD_LEADER status=$BUILD_AGGREGATE_STATUS
+
 notifications:
   webhooks:
     urls:
@@ -29,3 +67,8 @@ deploy:
     all_branches: true
     #must remain on all_branches: true together with tags: true due to the following bug: https://github.com/travis-ci/travis-ci/issues/1675
     #ideal situation would be to change it such that it only builds a release on the master branch on tag push
+
+env:
+  global:
+    - secure: "TFx95nhSu5t+w37VJg0N4DgCVuVsJqJYdFjB0+z81Wt7PP2RJMTHrZbfS6y2RgVu1SPSoS854Rp1spHnMxkE5qwAZOZhe8/zN7Z3LBoskzoPNrMcJAr1BLVrKuz71UEa27lopfarF9S2vgKuYUeO+9vZLy924m4d3I6ELZUGIBo="
+    - secure: "NALAo4hIyBltwNmNFoR/0hXpt/vHrImx6Hu5NDGcmcoDaYzwBOrt0iB2OF2CpuuaYRayQ7s7MOjOsSPx4xicHIQvaJEKw1n1/oHv2fyNOmwcC7+TeCEo/7fVrgAE1Fgu/+2XNMbNw/TafuruBtb9JNj7b89YCbVfOdPkZBR4gN8="

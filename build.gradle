@@ -3,7 +3,7 @@ apply plugin: 'maven'
 
 sourceCompatibility = 1.6
 
-group = 'com.skiwi'
+group = 'com.github.skiwi2'
 version = '0.1-SNAPSHOT'
 
 repositories {
@@ -12,4 +12,25 @@ repositories {
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.11'
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            pom.project {
+                name 'HearthMonitor LogAPI'
+                packaging 'jar'
+                description 'An API that can be used to export logs from HearthStone in a powerful way.'
+                url 'https://github.com/skiwi2/HearthMonitor-LogAPI'
+            }
+        }
+    }
 }
