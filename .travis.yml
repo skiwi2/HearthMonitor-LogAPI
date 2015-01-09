@@ -25,7 +25,7 @@ after_success:
           # TODO: call gradle uploadArchives with -P properties if branch == develop || branch == master
           echo "All Succeded! PUBLISHING..."
           if [[ ($TRAVIS_BRANCH = "master" && $TRAVIS_TAG) || $TRAVIS_BRANCH = "develop" ]]; then
-            gradlew uploadArchives -PossrhUsername="$OSSRH_USERNAME" -PossrhPassword="$OSSRH_PASSWORD"
+            ./gradlew uploadArchives -PossrhUsername="$OSSRH_USERNAME" -PossrhPassword="$OSSRH_PASSWORD"
           fi
         else
           echo "Some Failed"
