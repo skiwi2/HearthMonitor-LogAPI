@@ -5,4 +5,4 @@ package com.github.skiwi2.hearthmonitor.logapi;
  *
  * @author Frank van Heeswijk
  */
-public interface LogEntry { }
+public interface LogEntry extends LogObject { }
