@@ -1,7 +1,7 @@
 package com.github.skiwi2.hearthmonitor.logapi.power;
 
 /**
- * Utility class used to mimic used JDK 7 Objects behaviour.
+ * Utility class used to mimic JDK 7+ Objects behaviour.
  *
  * @author Frank van Heeswijk
  */
