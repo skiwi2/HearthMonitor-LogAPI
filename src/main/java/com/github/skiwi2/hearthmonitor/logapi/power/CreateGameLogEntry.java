@@ -15,8 +15,6 @@ import java.util.Set;
  */
 public class CreateGameLogEntry implements LogEntry {
     /*
-     * Example
-     *
      * [Power] GameState.DebugPrintPower() - CREATE_GAME
      * [Power] GameState.DebugPrintPower() -     GameEntity EntityID=1
      * [Power] GameState.DebugPrintPower() -         tag=10 value=85
@@ -99,8 +97,6 @@ public class CreateGameLogEntry implements LogEntry {
      */
     public static class GameEntityLogEntry implements LogEntry {
         /*
-         * Example
-         *
          * [Power] GameState.DebugPrintPower() -     GameEntity EntityID=1
          * [Power] GameState.DebugPrintPower() -         tag=10 value=85
          * [Power] GameState.DebugPrintPower() -         tag=TURN value=1
