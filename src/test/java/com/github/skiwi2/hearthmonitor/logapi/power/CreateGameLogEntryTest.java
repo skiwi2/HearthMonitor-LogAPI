@@ -72,6 +72,7 @@ public class CreateGameLogEntryTest {
             .addTagValuePair("test", "random")
             .addTagValuePair("test2", "random2")
             .build();
+
         GameAccountId gameAccountId2 = new GameAccountId.Builder()
             .hi("4")
             .lo("3")
