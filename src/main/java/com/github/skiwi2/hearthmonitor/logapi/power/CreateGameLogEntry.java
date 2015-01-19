@@ -129,7 +129,7 @@ public class CreateGameLogEntry implements LogEntry {
 
         public static class Builder {
             private String entityId;
-            private Map<String, String> tagValues = new HashMap<String, String>();
+            private final Map<String, String> tagValues = new HashMap<String, String>();
 
             public Builder entityId(final String entityId) {
                 this.entityId = Objects.requireNonNull(entityId, "entityId");
@@ -208,7 +208,7 @@ public class CreateGameLogEntry implements LogEntry {
             private String entityId;
             private String playerId;
             private GameAccountId gameAccountId;
-            private Map<String, String> tagValues = new HashMap<String, String>();
+            private final Map<String, String> tagValues = new HashMap<String, String>();
 
             public Builder entityId(final String entityId) {
                 this.entityId = Objects.requireNonNull(entityId, "entityId");
