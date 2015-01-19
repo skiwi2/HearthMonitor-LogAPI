@@ -27,9 +27,9 @@ public class FullEntityLogEntry implements LogEntry {
     private final Map<String, String> tagValues;
 
     private FullEntityLogEntry(final Builder builder) {
-        this.id = builder.id;
-        this.cardId = builder.cardId;
-        this.tagValues = builder.tagValues;
+        this.id = Objects.requireNonNull(builder.id, "builder.id");
+        this.cardId = Objects.requireNonNull(builder.cardId, "builder.cardId");
+        this.tagValues = Objects.requireNonNull(builder.tagValues, "builder.tagValues");
     }
 
     public String getId() {
