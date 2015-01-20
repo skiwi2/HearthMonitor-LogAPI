@@ -1,11 +1,13 @@
 package com.github.skiwi2.hearthmonitor.logapi.zone;
 
+import com.github.skiwi2.hearthmonitor.logapi.LogEntry;
+
 /**
  * Entry for [Zone] TRANSITIONING.
  *
  * @author Frank van Heeswijk
  */
-public class TransitioningLogEntry {
+public class TransitioningLogEntry implements LogEntry {
     /*
      * [Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [name=Gul'dan id=4 zone=PLAY zonePos=0 cardId=HERO_07 player=1] to FRIENDLY PLAY (Hero)
      */
