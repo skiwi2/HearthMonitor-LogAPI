@@ -8,6 +8,7 @@ public class TransitioningLogEntryTest {
     @Test
     public void testTransitioning() {
         TransitioningLogEntry transitioningLogEntry = new TransitioningLogEntry.Builder()
+            .indentation(2)
             .name("test")
             .id("1")
             .zone("zone1")
@@ -16,6 +17,7 @@ public class TransitioningLogEntryTest {
             .player("4")
             .targetZone("zone2")
             .build();
+        assertEquals(2, transitioningLogEntry.getIndentation());
         assertEquals("test", transitioningLogEntry.getName());
         assertEquals("1", transitioningLogEntry.getId());
         assertEquals("zone1", transitioningLogEntry.getZone());

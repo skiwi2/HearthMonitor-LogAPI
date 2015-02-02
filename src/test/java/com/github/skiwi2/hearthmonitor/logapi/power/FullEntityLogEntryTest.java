@@ -8,11 +8,13 @@ public class FullEntityLogEntryTest {
     @Test
     public void testFullEntity() {
         FullEntityLogEntry fullEntityLogEntry = new FullEntityLogEntry.Builder()
+            .indentation(2)
             .id("1")
             .cardId("2")
             .addTagValuePair("test", "random")
             .addTagValuePair("test2", "random2")
             .build();
+        assertEquals(2, fullEntityLogEntry.getIndentation());
         assertEquals("1", fullEntityLogEntry.getId());
         assertEquals("2", fullEntityLogEntry.getCardId());
         assertEquals("random", fullEntityLogEntry.getTagValue("test"));

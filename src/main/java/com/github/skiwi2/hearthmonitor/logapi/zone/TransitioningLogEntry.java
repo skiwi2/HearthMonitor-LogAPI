@@ -12,6 +12,7 @@ public class TransitioningLogEntry implements LogEntry {
      * [Zone] ZoneChangeList.ProcessChanges() - TRANSITIONING card [name=Gul'dan id=4 zone=PLAY zonePos=0 cardId=HERO_07 player=1] to FRIENDLY PLAY (Hero)
      */
 
+    private final int indentation;
     private final String name;
     private final String id;
     private final String zone;
@@ -21,6 +22,7 @@ public class TransitioningLogEntry implements LogEntry {
     private final String targetZone;
 
     private TransitioningLogEntry(final Builder builder) {
+        this.indentation = builder.indentation;
         this.name = Objects.requireNonNull(builder.name, "builder.name");
         this.id = Objects.requireNonNull(builder.id, "builder.id");
         this.zone = Objects.requireNonNull(builder.zone, "builder.zone");
@@ -28,6 +30,10 @@ public class TransitioningLogEntry implements LogEntry {
         this.cardId = Objects.requireNonNull(builder.cardId, "builder.cardId");
         this.player = Objects.requireNonNull(builder.player, "builder.player");
         this.targetZone = Objects.requireNonNull(builder.targetZone, "builder.targetZone");
+    }
+
+    public int getIndentation() {
+        return indentation;
     }
 
     public String getName() {
@@ -59,6 +65,7 @@ public class TransitioningLogEntry implements LogEntry {
     }
 
     public static class Builder {
+        private int indentation;
         private String name;
         private String id;
         private String zone;
@@ -66,6 +73,11 @@ public class TransitioningLogEntry implements LogEntry {
         private String cardId;
         private String player;
         private String targetZone;
+
+        public Builder indentation(final int indentation) {
+            this.indentation = indentation;
+            return this;
+        }
 
         public Builder name(final String name) {
             this.name = Objects.requireNonNull(name, "name");

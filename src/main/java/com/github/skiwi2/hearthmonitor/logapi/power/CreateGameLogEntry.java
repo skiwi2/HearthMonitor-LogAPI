@@ -56,12 +56,18 @@ public class CreateGameLogEntry implements LogEntry {
      * [Power] GameState.DebugPrintPower() -         tag=NUM_TURNS_LEFT value=1
      */
 
+    private final int indentation;
     private final GameEntityLogEntry gameEntityLogEntry;
     private final Set<PlayerLogEntry> playerLogEntries;
 
     private CreateGameLogEntry(final Builder builder) {
+        this.indentation = builder.indentation;
         this.gameEntityLogEntry = Objects.requireNonNull(builder.gameEntityLogEntry, "builder.gameEntityLogEntry");
         this.playerLogEntries = Objects.requireNonNull(builder.playerLogEntries, "builder.playerLogEntries");
+    }
+
+    public int getIndentation() {
+        return indentation;
     }
 
     public GameEntityLogEntry getGameEntityLogEntry() {
@@ -73,8 +79,14 @@ public class CreateGameLogEntry implements LogEntry {
     }
 
     public static class Builder {
+        private int indentation;
         private GameEntityLogEntry gameEntityLogEntry;
         private Set<PlayerLogEntry> playerLogEntries = new HashSet<PlayerLogEntry>();
+
+        public Builder indentation(final int indentation) {
+            this.indentation = indentation;
+            return this;
+        }
 
         public Builder gameEntityLogEntry(final GameEntityLogEntry gameEntityLogEntry) {
             this.gameEntityLogEntry = Objects.requireNonNull(gameEntityLogEntry, "gameEntityLogEntry");
@@ -107,12 +119,18 @@ public class CreateGameLogEntry implements LogEntry {
          * [Power] GameState.DebugPrintPower() -         tag=STATE value=RUNNING
          */
 
+        private final int indentation;
         private final String entityId;
         private final Map<String, String> tagValues;
 
         private GameEntityLogEntry(final Builder builder) {
+            this.indentation = builder.indentation;
             this.entityId = Objects.requireNonNull(builder.entityId, "builder.entityId");
             this.tagValues = Objects.requireNonNull(builder.tagValues, "builder.tagValues");
+        }
+
+        public int getIndentation() {
+            return indentation;
         }
 
         public String getEntityId() {
@@ -128,8 +146,14 @@ public class CreateGameLogEntry implements LogEntry {
         }
 
         public static class Builder {
+            private int indentation;
             private String entityId;
             private final Map<String, String> tagValues = new HashMap<String, String>();
+
+            public Builder indentation(final int indentation) {
+                this.indentation = indentation;
+                return this;
+            }
 
             public Builder entityId(final String entityId) {
                 this.entityId = Objects.requireNonNull(entityId, "entityId");
@@ -172,16 +196,22 @@ public class CreateGameLogEntry implements LogEntry {
          * [Power] GameState.DebugPrintPower() -         tag=NUM_TURNS_LEFT value=1
          */
 
+        private final int indentation;
         private final String entityId;
         private final String playerId;
         private final GameAccountId gameAccountId;
         private final Map<String, String> tagValues;
 
         private PlayerLogEntry(final Builder builder) {
+            this.indentation = builder.indentation;
             this.entityId = Objects.requireNonNull(builder.entityId, "builder.entityId");
             this.playerId = Objects.requireNonNull(builder.playerId, "builder.playerId");
             this.gameAccountId = Objects.requireNonNull(builder.gameAccountId, "builder.gameAccountId");
             this.tagValues = Objects.requireNonNull(builder.tagValues, "builder.tagValues");
+        }
+
+        public int getIndentation() {
+            return indentation;
         }
 
         public String getEntityId() {
@@ -205,10 +235,16 @@ public class CreateGameLogEntry implements LogEntry {
         }
 
         public static class Builder {
+            private int indentation;
             private String entityId;
             private String playerId;
             private GameAccountId gameAccountId;
             private final Map<String, String> tagValues = new HashMap<String, String>();
+
+            public Builder indentation(final int indentation) {
+                this.indentation = indentation;
+                return this;
+            }
 
             public Builder entityId(final String entityId) {
                 this.entityId = Objects.requireNonNull(entityId, "entityId");

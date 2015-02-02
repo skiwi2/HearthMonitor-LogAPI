@@ -22,14 +22,20 @@ public class FullEntityLogEntry implements LogEntry {
      * [Power] GameState.DebugPrintPower() -     tag=RARITY value=FREE
      */
 
+    private final int indentation;
     private final String id;
     private final String cardId;
     private final Map<String, String> tagValues;
 
     private FullEntityLogEntry(final Builder builder) {
+        this.indentation = builder.indentation;
         this.id = Objects.requireNonNull(builder.id, "builder.id");
         this.cardId = Objects.requireNonNull(builder.cardId, "builder.cardId");
         this.tagValues = Objects.requireNonNull(builder.tagValues, "builder.tagValues");
+    }
+
+    public int getIndentation() {
+        return indentation;
     }
 
     public String getId() {
@@ -49,9 +55,15 @@ public class FullEntityLogEntry implements LogEntry {
     }
 
     public static class Builder {
+        private int indentation;
         private String id;
         private String cardId;
         private final Map<String, String> tagValues = new HashMap<String, String>();
+
+        public Builder indentation(final int indentation) {
+            this.indentation = indentation;
+            return this;
+        }
 
         public Builder id(final String id) {
             this.id = Objects.requireNonNull(id, "id");

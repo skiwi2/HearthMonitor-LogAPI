@@ -12,14 +12,20 @@ public class TagChangeLogEntry implements LogEntry {
      * [Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=skiwi tag=TIMEOUT value=75
      */
 
+    private final int indentation;
     private final String entity;
     private final String tag;
     private final String value;
 
     private TagChangeLogEntry(final Builder builder) {
+        this.indentation = builder.indentation;
         this.entity = Objects.requireNonNull(builder.entity, "builder.entity");
         this.tag = Objects.requireNonNull(builder.tag, "builder.tag");
         this.value = Objects.requireNonNull(builder.value, "builder.value");
+    }
+
+    public int getIndentation() {
+        return indentation;
     }
 
     public String getEntity() {
@@ -35,9 +41,15 @@ public class TagChangeLogEntry implements LogEntry {
     }
 
     public static class Builder {
+        private int indentation;
         private String entity;
         private String tag;
         private String value;
+
+        public Builder indentation(final int indentation) {
+            this.indentation = indentation;
+            return this;
+        }
 
         public Builder entity(final String entity) {
             this.entity = Objects.requireNonNull(entity, "entity");

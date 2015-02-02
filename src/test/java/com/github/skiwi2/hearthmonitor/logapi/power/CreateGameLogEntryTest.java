@@ -27,12 +27,14 @@ public class CreateGameLogEntryTest {
             .build();
 
         PlayerLogEntry playerLogEntry = new PlayerLogEntry.Builder()
+            .indentation(4)
             .playerId("1")
             .entityId("2")
             .gameAccountId(gameAccountId)
             .addTagValuePair("test", "random")
             .addTagValuePair("test2", "random2")
             .build();
+        assertEquals(4, playerLogEntry.getIndentation());
         assertEquals("1", playerLogEntry.getPlayerId());
         assertEquals("2", playerLogEntry.getEntityId());
         assertEquals(gameAccountId, playerLogEntry.getGameAccountId());
@@ -43,10 +45,12 @@ public class CreateGameLogEntryTest {
     @Test
     public void testGameEntityLogEntry() {
         GameEntityLogEntry gameEntityLogEntry = new GameEntityLogEntry.Builder()
+            .indentation(4)
             .entityId("1")
             .addTagValuePair("test", "random")
             .addTagValuePair("test2", "random2")
             .build();
+        assertEquals(4, gameEntityLogEntry.getIndentation());
         assertEquals("1", gameEntityLogEntry.getEntityId());
         assertEquals("random", gameEntityLogEntry.getTagValue("test"));
         assertEquals("random2", gameEntityLogEntry.getTagValue("test2"));
@@ -55,6 +59,7 @@ public class CreateGameLogEntryTest {
     @Test
     public void testCreateGameLogEntry() {
         GameEntityLogEntry gameEntityLogEntry = new GameEntityLogEntry.Builder()
+            .indentation(4)
             .entityId("1")
             .addTagValuePair("test", "random")
             .addTagValuePair("test2", "random2")
@@ -66,6 +71,7 @@ public class CreateGameLogEntryTest {
             .build();
 
         PlayerLogEntry playerLogEntry1 = new PlayerLogEntry.Builder()
+            .indentation(4)
             .playerId("1")
             .entityId("2")
             .gameAccountId(gameAccountId1)
@@ -79,6 +85,7 @@ public class CreateGameLogEntryTest {
             .build();
 
         PlayerLogEntry playerLogEntry2 = new PlayerLogEntry.Builder()
+            .indentation(4)
             .playerId("2")
             .entityId("3")
             .gameAccountId(gameAccountId2)
@@ -87,10 +94,12 @@ public class CreateGameLogEntryTest {
             .build();
 
         CreateGameLogEntry createGameLogEntry = new CreateGameLogEntry.Builder()
+            .indentation(2)
             .gameEntityLogEntry(gameEntityLogEntry)
             .addPlayerLogEntry(playerLogEntry1)
             .addPlayerLogEntry(playerLogEntry2)
             .build();
+        assertEquals(2, createGameLogEntry.getIndentation());
         assertEquals(gameEntityLogEntry, createGameLogEntry.getGameEntityLogEntry());
         assertThat(createGameLogEntry.getPlayerLogEntries(), hasItems(playerLogEntry1, playerLogEntry2));
     }
