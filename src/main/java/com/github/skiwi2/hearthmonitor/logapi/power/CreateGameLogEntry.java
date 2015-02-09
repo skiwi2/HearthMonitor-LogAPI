@@ -11,7 +11,7 @@ import java.util.Set;
  * @author Frank van Heeswijk
  */
 public class CreateGameLogEntry implements LogEntry {
-    /*
+    /**
      * [Power] GameState.DebugPrintPower() - CREATE_GAME
      * [Power] GameState.DebugPrintPower() -     GameEntity EntityID=1
      * [Power] GameState.DebugPrintPower() -         tag=10 value=85
