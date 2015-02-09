@@ -16,20 +16,28 @@ public class ActionStartLogEntryTest {
             .name("skiwi")
             .build();
 
+        EntityLogObject indexEntity = new PlayerEntityLogObject.Builder()
+            .name("-1")
+            .build();
+
+        EntityLogObject targetEntity = new PlayerEntityLogObject.Builder()
+            .name("0")
+            .build();
+
         ActionStartLogEntry actionStartLogEntry = new ActionStartLogEntry.Builder()
             .indentation(0)
             .entity(playerEntity)
             .subtype("TRIGGER")
-            .index("-1")
-            .target("0")
+            .index(indexEntity)
+            .target(targetEntity)
             .addLogEntry(logEntry1)
             .addLogEntry(logEntry2)
             .build();
         assertEquals(0, actionStartLogEntry.getIndentation());
         assertEquals(playerEntity, actionStartLogEntry.getEntity());
         assertEquals("TRIGGER", actionStartLogEntry.getSubtype());
-        assertEquals("-1", actionStartLogEntry.getIndex());
-        assertEquals("0", actionStartLogEntry.getTarget());
+        assertEquals(indexEntity, actionStartLogEntry.getIndex());
+        assertEquals(targetEntity, actionStartLogEntry.getTarget());
         assertThat(actionStartLogEntry.getLogEntries(), hasItems(logEntry1, logEntry2));
     }
 

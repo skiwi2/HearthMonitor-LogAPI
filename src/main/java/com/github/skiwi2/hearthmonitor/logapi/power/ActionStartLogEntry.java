@@ -42,8 +42,8 @@ public class ActionStartLogEntry implements LogEntry {
     private final int indentation;
     private final EntityLogObject entity;
     private final String subtype;
-    private final String index;
-    private final String target;
+    private final EntityLogObject index;
+    private final EntityLogObject target;
     private final List<LogEntry> logEntries;
 
     private ActionStartLogEntry(final Builder builder) {
@@ -67,11 +67,11 @@ public class ActionStartLogEntry implements LogEntry {
         return subtype;
     }
 
-    public String getIndex() {
+    public EntityLogObject getIndex() {
         return index;
     }
 
-    public String getTarget() {
+    public EntityLogObject getTarget() {
         return target;
     }
 
@@ -83,8 +83,8 @@ public class ActionStartLogEntry implements LogEntry {
         private int indentation;
         private EntityLogObject entity;
         private String subtype;
-        private String index;
-        private String target;
+        private EntityLogObject index;
+        private EntityLogObject target;
         private final List<LogEntry> logEntries = new ArrayList<LogEntry>();
 
         public Builder indentation(final int indentation) {
@@ -102,12 +102,12 @@ public class ActionStartLogEntry implements LogEntry {
             return this;
         }
 
-        public Builder index(final String index) {
+        public Builder index(final EntityLogObject index) {
             this.index = Objects.requireNonNull(index, "index");
             return this;
         }
 
-        public Builder target(final String target) {
+        public Builder target(final EntityLogObject target) {
             this.target = Objects.requireNonNull(target, "target");
             return this;
         }
