@@ -40,7 +40,7 @@ public class ActionStartTriggerLogEntry implements LogEntry {
      */
 
     private final int indentation;
-    private final String entity;
+    private final EntityLogObject entity;
     private final String subtype;
     private final String index;
     private final String target;
@@ -59,7 +59,7 @@ public class ActionStartTriggerLogEntry implements LogEntry {
         return indentation;
     }
 
-    public String getEntity() {
+    public EntityLogObject getEntity() {
         return entity;
     }
 
@@ -81,7 +81,7 @@ public class ActionStartTriggerLogEntry implements LogEntry {
 
     public static class Builder {
         private int indentation;
-        private String entity;
+        private EntityLogObject entity;
         private String subtype;
         private String index;
         private String target;
@@ -92,7 +92,7 @@ public class ActionStartTriggerLogEntry implements LogEntry {
             return this;
         }
 
-        public Builder entity(final String entity) {
+        public Builder entity(final EntityLogObject entity) {
             this.entity = Objects.requireNonNull(entity, "entity");
             return this;
         }

@@ -13,7 +13,7 @@ public class TagChangeLogEntry implements LogEntry {
      */
 
     private final int indentation;
-    private final String entity;
+    private final EntityLogObject entity;
     private final String tag;
     private final String value;
 
@@ -28,7 +28,7 @@ public class TagChangeLogEntry implements LogEntry {
         return indentation;
     }
 
-    public String getEntity() {
+    public EntityLogObject getEntity() {
         return entity;
     }
 
@@ -42,7 +42,7 @@ public class TagChangeLogEntry implements LogEntry {
 
     public static class Builder {
         private int indentation;
-        private String entity;
+        private EntityLogObject entity;
         private String tag;
         private String value;
 
@@ -51,7 +51,7 @@ public class TagChangeLogEntry implements LogEntry {
             return this;
         }
 
-        public Builder entity(final String entity) {
+        public Builder entity(final EntityLogObject entity) {
             this.entity = Objects.requireNonNull(entity, "entity");
             return this;
         }

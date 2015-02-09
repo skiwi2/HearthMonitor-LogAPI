@@ -12,9 +12,13 @@ public class ActionStartTriggerLogEntryTest {
         LogEntry logEntry1 = new TestLogEntry();
         LogEntry logEntry2 = new TestLogEntry();
 
+        EntityLogObject playerEntity = new PlayerEntityLogObject.Builder()
+            .name("skiwi")
+            .build();
+
         ActionStartTriggerLogEntry actionStartTriggerLogEntry = new ActionStartTriggerLogEntry.Builder()
             .indentation(0)
-            .entity("skiwi")
+            .entity(playerEntity)
             .subtype("TRIGGER")
             .index("-1")
             .target("0")
@@ -22,7 +26,7 @@ public class ActionStartTriggerLogEntryTest {
             .addLogEntry(logEntry2)
             .build();
         assertEquals(0, actionStartTriggerLogEntry.getIndentation());
-        assertEquals("skiwi", actionStartTriggerLogEntry.getEntity());
+        assertEquals(playerEntity, actionStartTriggerLogEntry.getEntity());
         assertEquals("TRIGGER", actionStartTriggerLogEntry.getSubtype());
         assertEquals("-1", actionStartTriggerLogEntry.getIndex());
         assertEquals("0", actionStartTriggerLogEntry.getTarget());
