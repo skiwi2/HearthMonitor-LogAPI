@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.hasItems;
 import static org.junit.Assert.*;
 
-public class ActionStartTriggerLogEntryTest {
+public class ActionStartLogEntryTest {
     @Test
     public void testActionStartTrigger() {
         LogEntry logEntry1 = new TestLogEntry();
@@ -16,7 +16,7 @@ public class ActionStartTriggerLogEntryTest {
             .name("skiwi")
             .build();
 
-        ActionStartTriggerLogEntry actionStartTriggerLogEntry = new ActionStartTriggerLogEntry.Builder()
+        ActionStartLogEntry actionStartLogEntry = new ActionStartLogEntry.Builder()
             .indentation(0)
             .entity(playerEntity)
             .subtype("TRIGGER")
@@ -25,12 +25,12 @@ public class ActionStartTriggerLogEntryTest {
             .addLogEntry(logEntry1)
             .addLogEntry(logEntry2)
             .build();
-        assertEquals(0, actionStartTriggerLogEntry.getIndentation());
-        assertEquals(playerEntity, actionStartTriggerLogEntry.getEntity());
-        assertEquals("TRIGGER", actionStartTriggerLogEntry.getSubtype());
-        assertEquals("-1", actionStartTriggerLogEntry.getIndex());
-        assertEquals("0", actionStartTriggerLogEntry.getTarget());
-        assertThat(actionStartTriggerLogEntry.getLogEntries(), hasItems(logEntry1, logEntry2));
+        assertEquals(0, actionStartLogEntry.getIndentation());
+        assertEquals(playerEntity, actionStartLogEntry.getEntity());
+        assertEquals("TRIGGER", actionStartLogEntry.getSubtype());
+        assertEquals("-1", actionStartLogEntry.getIndex());
+        assertEquals("0", actionStartLogEntry.getTarget());
+        assertThat(actionStartLogEntry.getLogEntries(), hasItems(logEntry1, logEntry2));
     }
 
     private static class TestLogEntry implements LogEntry { }

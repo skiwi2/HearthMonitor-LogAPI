@@ -6,11 +6,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Entry for [POWER] ACTION_START SubType=TRIGGER
+ * Entry for [POWER] ACTION_START.
  *
  * @author Frank van Heeswijk
  */
-public class ActionStartTriggerLogEntry implements LogEntry {
+public class ActionStartLogEntry implements LogEntry {
     /*
      * [Power] GameState.DebugPrintPower() - ACTION_START Entity=skiwi SubType=TRIGGER Index=-1 Target=0
      * [Power] GameState.DebugPrintPower() -     SHOW_ENTITY - Updating Entity=[id=33 cardId= type=INVALID zone=DECK zonePos=0 player=1] CardID=CS2_062
@@ -46,7 +46,7 @@ public class ActionStartTriggerLogEntry implements LogEntry {
     private final String target;
     private final List<LogEntry> logEntries;
 
-    private ActionStartTriggerLogEntry(final Builder builder) {
+    private ActionStartLogEntry(final Builder builder) {
         this.indentation = builder.indentation;
         this.entity = Objects.requireNonNull(builder.entity, "builder.entity");
         this.subtype = Objects.requireNonNull(builder.subtype, "builder.subtype");
@@ -118,8 +118,8 @@ public class ActionStartTriggerLogEntry implements LogEntry {
             return this;
         }
 
-        public ActionStartTriggerLogEntry build() {
-            return new ActionStartTriggerLogEntry(this);
+        public ActionStartLogEntry build() {
+            return new ActionStartLogEntry(this);
         }
     }
 }
