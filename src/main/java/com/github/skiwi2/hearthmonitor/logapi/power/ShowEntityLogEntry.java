@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Entry for [POWER] SHOW_ENTITY
+ * Entry for [POWER] SHOW_ENTITY.
  *
  * @author Frank van Heeswijk
  */

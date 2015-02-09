@@ -1,7 +1,7 @@
 package com.github.skiwi2.hearthmonitor.logapi.power;
 
 /**
- * Object for [POWER] Entity=?, used for cards
+ * Object for [POWER] Entity=?, used for cards.
  *
  * @author Frank van Heeswijk
  */

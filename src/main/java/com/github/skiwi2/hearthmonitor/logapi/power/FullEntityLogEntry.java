@@ -6,7 +6,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Entry for [Power] FULL_ENTITY
+ * Entry for [Power] FULL_ENTITY.
  *
  * @author Frank van Heeswijk
  */
