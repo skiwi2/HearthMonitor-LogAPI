@@ -1,11 +1,13 @@
 package com.github.skiwi2.hearthmonitor.logapi.power;
 
+import com.github.skiwi2.hearthmonitor.logapi.LogObject;
+
 /**
  * Interface for [POWER} Entity=? object.
  *
  * @author Frank van Heeswijk
  */
-public interface EntityLogObject {
+public interface EntityLogObject extends LogObject {
     /**
      * Examples of supported cases:
      *  - [Power] GameState.DebugPrintPower() - TAG_CHANGE Entity=skiwi tag=MULLIGAN_STATE value=WAITING
